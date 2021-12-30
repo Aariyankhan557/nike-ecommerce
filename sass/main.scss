@@ -1,0 +1,765 @@
+    //-- add variable --//
+//=================//
+    //-- fonts-variable --//
+//=================//
+        //-- cormorant garamond fonts--//
+            $cg:CormorantGaramond-Medium;
+        //-- poppins fonts --//
+            $pop-bold :Poppins-Bold;
+            $pop-medium :Poppins-Medium;
+            $pop-regular :Poppins-Regular;
+            $pop-light :Poppins-Light;
+        //-- roboto fonts --//
+            $rob-bold :Roboto-Bold;
+            $rob-regular :Roboto-Regular;
+//=================//
+    //-- color variable --//
+            $p-color:#a5a5a5;
+            $pri-color:#82f4d3;
+            $ano:#bef4e4;
+            $hover-color:#90f3d7;            
+            $blur-color:rgba(0,0,0,0.2);
+//================//
+    //-- function of sass --//
+@mixin after(){
+    content:' ';
+    display: block;
+    clear: both;
+}
+
+//--- add custom font ---//
+@font-face {
+    src:url('../fonts/cormorant-garamond/CormorantGaramond-Medium.ttf');
+    font-family:$cg ;
+}
+@font-face {
+    src:url('../fonts/poppins/Poppins-Bold.ttf');
+    font-family:$pop-bold ;
+}
+@font-face {
+    src:url('../fonts/poppins/Poppins-Medium.ttf');
+    font-family:$pop-medium ;
+}
+@font-face {
+    src:url('../fonts/poppins/Poppins-Regular.ttf');
+    font-family:$pop-regular ;
+}
+@font-face {
+    src:url('../fonts/poppins/Poppins-Light.ttf');
+    font-family:$pop-light ;
+}
+@font-face {
+    src:url('../fonts/roboto/Roboto-Bold.ttf');
+    font-family:$rob-bold;
+}
+@font-face {
+    src:url('../fonts/roboto/Roboto-Regular.ttf');
+    font-family: $rob-regular;
+}
+
+//-- root style for the style sheet --//
+@at-root *,body,{
+    margin: 0px;
+    padding: 0px;
+} 
+@at-root .btn:focus{
+    box-shadow: 0 0 0 .15em rgba(0,0,0,.15);        
+}
+@at-root ul{
+    padding: 0;
+    list-style: none;
+    >li{
+        >a{
+            text-transform: capitalize;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+    }
+}
+@at-root .button{
+                font-family: $pop-bold ;
+                background: $pri-color; 
+                letter-spacing: 1px;
+                position: relative;
+                border:0;
+                transition: all .15s linear;
+                &:hover{
+                    opacity: .7;
+                }
+                @media all and(max-width: 767px){
+                    margin-top: 20px !important;
+                }
+            }
+@at-root section{                           
+    padding: 60px 0;
+    overflow: hidden;
+    @media all and(max-width: 767px){
+        padding: 20px 0;
+    }
+}
+    //bootstrap custom code
+@at-root .row {
+    padding: 0 7px;
+}
+@at-root .col-sm-12{
+    box-sizing: border-box;
+}
+//--- start design part from here on sass ---//
+header{
+    height: 100vh;
+    background:linear-gradient(to top right, #e9e9e9 52%, $pri-color 48%);
+    overflow: hidden;
+    position: relative !important;
+    background-position: center center;
+    background-size:100% 500%;           
+    .shoe-img{
+            height: 100%;
+            position: absolute;
+            top:15%;
+            bottom:0;
+            left: 0;                 
+            right: 0;
+            margin: auto;
+            background-image: url("../img/shoe-img.png");
+            background-repeat: no-repeat;
+            background-position: 55.6% center;              
+            background-size: 45% 80%;
+            transition: all .20s linear;
+            @media all and(min-width: 800px) and(max-width: 1000px) {
+                background-size:45% 60%;
+            }
+            @media all and(min-width: 500px) and(max-width: 799px) {
+                background-size: 60% 60%;
+            }    
+            @media all and(min-width: 0px) and(max-width: 499px) {
+                background-size: 70% 60%;
+            }                                                       
+    .menu-circle{
+        width:13px;
+        height: 13px;
+        border: 2px solid black;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin: 0 6px;
+        background: transparent;
+        transition: all .3s linear;
+        @media all and(max-width: 350px){
+            margin: 3px;
+        }
+        }
+    .menu{
+        overflow-y: visible;         
+        h5{
+            font-family:   $pop-regular;
+            font-size: 20px;
+        }
+        ul{
+            li{
+                border-bottom: .5px solid black;
+                a{
+                    padding:5px 0;
+                    color: #000;
+                    font-size: 20px;
+                    letter-spacing: 1.2px;
+                    transition:all .3s linear;
+                    &:hover{
+                        transform:  scale(1.2);          
+                        background: #61e9c2;
+                        color:#212529;                
+                    }
+                }
+            }
+        }
+    }
+    .head-content{                                              
+        padding: 30px 0 0 0;
+        height: 100%;
+        h1{
+            font-family: $rob-bold;
+            font-size: 125px;
+            letter-spacing: 2px;
+            @media all and(max-width:767px){
+                font-size: 90px
+            }
+        }
+        .shop-button{
+            padding: 10px 0;
+            .button{
+                margin-left: 100px;
+                padding: 10px 35px;
+                @media all and(max-width: 500px){
+                    margin-left: 50px;
+                }
+                &:hover{
+                    padding: 10px 33px;
+                }
+                &:hover:after{
+                    top: 0px;
+                    left:0px;
+                    right: 0px;
+                    bottom:0px;
+                }
+                &:after{
+                    @include after();
+                    top: 8px;
+                    left: -12px;
+                    right: 10px;
+                    bottom: -12px;
+                    position: absolute;
+                    border-radius: 5px;
+                    border:2px solid $pri-color; 
+                    transition:all .3s linear;
+                }
+            }
+        }
+    }
+    button.menu-btn{
+        padding: 8px 15px;                           
+        border-radius: 50%;
+        background: black;
+        margin-left: 10px;
+        display: inline-block;
+        text-align: center;
+        font-size: 19px;
+        transition: all .3s linear;
+        @media all and(max-width: 400px){           
+            margin-left: 5px;
+        }
+    }
+    .social{
+        position: absolute;
+        bottom: 17%;
+        right: 0px;
+        ul{
+            padding: 0 20px;
+            li{
+                margin-bottom: 20px;
+                a{
+                    font-size: 20px;
+                    width:20px;
+                    height: 20px;
+                    padding: 10px;
+                    line-height: 1em;
+                    background: black;                  
+                    border-radius:50%;
+                    color:white;
+                    transition:all .3s linear;
+                    &:hover{
+                        color:$pri-color;
+                        background: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    .sub-head{
+            left: 0;                     
+            width: 23%;           
+            bottom: 17%;
+            position: absolute;
+            padding:20px 10px;
+            transition: all .3s linear;
+            p{
+                color: #8f8f8f;
+                font-size: 11px;
+                display: inline-block;
+                letter-spacing: 1.5px;                        
+                font-family:$pop-regular; 
+                transform: rotate(-90deg) translateY(-200%) translateX(35%);
+               }
+            @media all and(min-width: 901px) and(max-width: 1150px){
+                width:30%;
+            }                                                      
+            @media all and(min-width: 768px) and(max-width: 900px){
+                width:35%;
+            }
+            @media all and(max-width: 767px){   
+                width:50%;
+                p{
+                    transform: rotate(0deg) translateY(0) translateX(0);
+                }
+            }
+        }
+    }
+}          
+
+//---- main part design from here ----//
+.deatlies{
+    background-color: #f8f8f8;
+    .deatlies-content{         
+        .img{
+            overflow: visible;
+            position: relative;
+            .blur{
+                top:0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width:100%;
+                height: 100%;
+                position: absolute;
+                transform:translateX(10%);
+                background: rgba(0,0,0,0.6);
+                opacity: 0.15;
+                @media all and(max-width: 767px){
+                    transform: translateX(0);
+                    width:70%;
+                    height: 90%;
+                    margin: 0 auto;
+                }
+            }
+            img{
+                width:100%;
+                height: 100%;
+                transform: rotate(30deg) translateX(15%) translateY(-11%);    
+                @media all and(max-width: 767px){
+                    width:65%;
+                    transform: translate(34%,-9%) rotate(30deg);
+                }      
+            }
+        }
+        @at-root .img-content{
+            text-transform: capitalize;
+            text-align: justify;
+            h2{
+                font-family: $cg;
+                font-size: 40px;
+                margin-bottom: 15px;
+                @media all and(max-width: 991px){
+                    font-size: 30px;
+                    margin-top: 20px;
+                }  
+            }
+            p{
+                color: $p-color;
+                font-size: 15px;
+                margin-right: 15%;
+            }
+            button{
+                font-size: 15px;
+                margin-top: 40px;
+                letter-spacing: 0px;
+                padding: 8px 20px;
+                text-transform: capitalize;
+                font-family: $pop-medium ;
+            }
+        }
+    }
+}
+.product{
+    .amar{
+        position: relative;
+    }
+    .owl-stage{
+        transition: all .4s linear !important;
+        padding:30px 0 10px;
+        & .center{
+            background: red;
+            transform: scale(1.1) !important;
+            box-shadow: 0 0 1rem .27rem rgba(0,0,0,.5);
+            .img{
+                background: rgba(0,0,0,.47);
+                margin-top: 30px;
+            }
+            .pro-deatlies{
+                >h5{
+                    color:#f08c00;              
+                }
+            }
+        }
+    }
+    .owl-nav{
+        padding-top: 20px;            
+        position: absolute;
+        bottom: -17px;          
+        right: 0;
+        font-size: 30px;
+        text-align: right;
+        button{
+            margin-right: 10px;
+        }
+    }
+    h1{
+        font-size:38px;
+        font-family:$cg;
+        text-align: center;
+        letter-spacing: 1.8px;      
+        text-transform: capitalize;
+    }
+    .pro-content{
+        width:90%;
+        margin: 20px auto;
+       .img{
+            height: 250px;
+            position: relative;
+            margin-bottom: 20px;
+            background:$blur-color;
+            transition: all .3s linear;
+            &:hover{
+                box-shadow: 0 .5rem 1rem rgba(0,0,0,.5);                    
+            }
+            &:hover .img-hover{
+                opacity: .9;
+            }
+            .img-hover{
+                transition: all .3s linear; 
+                background:$hover-color;
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                button{
+                    text-transform: capitalize;
+                    border: 2px solid #f8f9fa;
+                    &:hover{
+                        color: $pri-color !important;
+                    }
+                }
+            }
+            img{
+                width: 85%;
+                display: block;
+                transform: translateX(14%) rotate(30deg);
+                box-sizing: border-box;
+                @media all and(max-width:767px){
+                    width:75%;
+                    transform: translateX(20%) rotate(18deg); 
+                }
+            }
+        }
+    }
+    .pro-deatlies{
+            text-transform: capitalize;
+            font-family: $pop-regular;
+        @media all and(max-width: 767px){
+            text-align: center;
+        }
+        h5{
+            font-size: 15px;
+            display: inline-block;
+        }
+        span{
+            color:#bbbbbb;
+            margin-left: 8px;
+        }
+        h3{
+            color:#999999;
+            margin-top: 8px;
+            font-family:$rob-regular;
+        }
+        
+    }
+}
+.collection{
+    padding-bottom: 80px;
+    .img-content{
+        p{
+            margin: 0;
+        }
+    }
+    .img{
+        @media all and(max-width: 767px){
+            margin-top: 20px;
+        }
+        margin-left: 25%;
+        width: 50%;
+        position: relative;
+        border: 10px solid white;
+        border-right-width: 7px;
+        border-left-width: 7px;
+        &:hover:after{
+            top:0;
+            left: 0;         
+            z-index: 1;
+            opacity: .5;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-align: center;    
+            align-items: center;
+            justify-content: center;
+            content: "we provide great service to our customers"; 
+        }
+        &:after{
+            @media all and(max-width: 767px){
+                top:30%;
+                left: 60%;
+                width: 80%;
+            }
+            @media all and(min-width: 476px) and(max-width: 530px){
+                height: 340px;          
+            }
+            @media all and(min-width: 410px) and(max-width: 475px){
+                height: 305px;          
+            }
+            @media all and(max-width: 409px){
+                height: 258px;          
+            }
+            top:45%;
+            left:60%;
+            z-index: -1;
+            clear: both;
+            width: 65%;                      
+            content: " ";
+            color:black;
+            display: block;
+            height: 300px;               
+            font-size: 20px;
+            position: absolute;
+            transition: all .6s linear;
+            text-transform: capitalize;
+            background: url(../img/nike-after.jpg) ;
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        img{                         
+            width: 100%;   
+            display: block;
+        }
+    }
+}
+.thought{
+    text-align: center;
+    text-transform: capitalize;
+    h1{
+        font-size: 35px;
+        font-weight: unset;
+        font-family: $cg;
+    }
+    p{
+        @media all and(max-width: 767px){
+            width: 90%;
+        }
+        width: 65%;
+        color:$p-color;
+        font-size: 16px;
+        margin: 30px auto;
+    }
+    h4{
+        font-size: 18px;
+        color:#666666;
+        letter-spacing: 1px;
+        font-family: $pop-regular;
+    }
+    h5{
+        font-family: $pop-regular;
+        color:#51cda9;
+        font-size: 13px;
+    }
+}
+.blog{
+    padding-bottom: 100px;
+    @media all and(max-width: 767px){
+        padding-bottom: 30px;         
+    }
+    h1{
+        text-align: center;
+        font-family: $cg;
+        text-transform: capitalize;
+        font-size: 50px;
+        margin-bottom: 40px;                
+        font-weight: unset;
+        font-family: $cg;
+    }
+    .img-content{
+        @media all and(max-width: 767px){
+            margin-top: 20px;
+        }
+        h2{
+            font-size: 18px;
+            font-family:  $pop-medium;
+        }
+    }
+    .img{
+        @media all and(max-width: 767px){
+            margin: 0 auto;
+            width:65%;
+        }
+        margin-left: 5%;
+        width: 80%;
+        position: relative;
+        border: 10px solid white;
+        border-right-width: 7px;
+        border-left-width: 7px;
+        &:hover:after{                  
+            top:0;
+            left: 0;         
+            z-index: 1;
+            opacity: .5;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-align: center;    
+            align-items: center;
+            justify-content: center;
+            content: "we provide great service to our customers"; 
+        }
+        &:after{
+            @media all and(max-width: 767px){
+                top:23%;
+                left: 64%;
+                width: 70%;
+            }
+            @media all and(min-width: 476px) and(max-width: 530px){
+                height: 340px;          
+            }
+            @media all and(min-width: 410px) and(max-width: 475px){
+                height: 305px;          
+            }
+            @media all and(max-width: 409px){
+                height: 258px;          
+            }
+            top:48%;
+            left:70%;
+            z-index: -1;
+            clear: both;
+            width: 65%;                      
+            content: " ";
+            color:black;
+            display: block;
+            height: 370px;               
+            font-size: 20px;
+            position: absolute;
+            transition: all .6s linear;
+            text-transform: capitalize;
+            background: url(../img/nike-after.jpg) ;
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        img{       
+            width: 100%;   
+            display: block;
+        }
+    }
+    
+}
+
+//----- footer part srtart from here -----//
+footer{
+    .footer-start{
+        text-transform: capitalize;
+         a{
+            @media all and(max-width: 767px){
+                text-align: right;   
+            }
+            @media all and(max-width: 575px){
+                text-align: left;  
+                margin: 7px 0;                   
+            }
+             text-align: left;
+             font-family: $pop-regular;
+             color:$p-color;
+             transition: all .20s linear;
+             &:hover{
+                 transform: scale(1.1);
+                 color:$pri-color;
+                 @media all and(max-width: 575px){
+                        transform: scale(.98); 
+                 }
+             }
+             svg{                                
+                 margin:5px 8px;
+                 font-size:18px;
+                 transition: all .2s linear;
+             }
+             &:hover svg{
+                 transform:translateY(-13px);
+             }
+         }
+        h2{
+            @media all and(max-width: 767px){
+                text-align: center;
+                font-size: 30px;
+                text-shadow: -2px -1.2px 1.5px rgba(0,0,0,0.8) !important;                                    
+                margin-top: 20px;
+            }
+             text-align: left;
+             font-family: $pop-regular;
+             color:$p-color;
+            font-size: 17px;
+        }  
+        .icon{
+            @media all and(max-width: 767px){
+                text-align: center;
+                margin:30px 0 0;
+            }
+        }
+        form{
+            margin: 30px 0;
+            @media all and(max-width: 767px){
+                margin: 15px;
+            }
+            .input{
+                width: 65%;                         
+            }
+            .batton{
+                width: 32%;
+            }
+            .button{
+                @media all and(max-width: 767px){
+                    margin-top: 0 !important;             
+                }
+                display: block;
+                width: 100%;
+                padding: .975rem .75rem;  
+                font-family:$pop-regular ;
+                text-transform: capitalize;
+                &:hover{
+                    box-shadow: 0px 0px !important;
+                }
+            }
+            label{
+                color:$p-color;
+                height: auto !important;
+                padding: .75rem !important;
+                
+            }           
+            input{
+                &:focus{
+                    border-width: 1px;
+                }
+                border-width: 0px;
+                padding-top: 1.425rem  !important;
+                padding-bottom: 0.425rem !important;
+                box-sizing: border-box;
+                height: auto !important;
+            }
+        }
+    }
+    .footer-end{
+        text-transform: capitalize;
+        padding: 20px;
+        @media all and(max-width: 767px){
+            p{
+                text-align: center !important;
+            }
+            a{
+                text-align: center !important;
+            }
+        }
+        p{
+            text-align: left;
+            color: $p-color;
+            font-size: 17px;
+        }
+        a{
+            text-decoration: none;
+            text-align: right;
+            display: block;
+            color: $p-color;
+            letter-spacing: 1px;
+            word-spacing: 2px;
+            font-size: 17px;
+            transition:all .15s linear;
+            &:hover{
+                color:$pri-color;       
+                transform: scale(.98);
+            }
+        }
+    }
+}
